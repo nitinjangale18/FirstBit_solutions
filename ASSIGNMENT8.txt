@@ -1,0 +1,65 @@
+Assignment8
+
+1)
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+int main() {
+    char userid[20], password[20];
+    int code, entered_code;
+
+    // Step 1: Ask for ID and password
+    printf("Enter User ID: ");
+    scanf("%s", userid);
+
+    printf("Enter Password: ");
+    scanf("%s", password);
+
+    // Step 2: Check credentials (fixed values: "admin", "1234")
+    if (strcmp(userid, "admin") == 0 && strcmp(password, "1234") == 0) {
+        srand(time(0));  
+        code = rand() % 9000 + 1000;   // random 4-digit number
+        printf("Verification Code: %d\n", code);
+
+        // Step 3: Verify code
+        printf("Enter the code: ");
+        scanf("%d", &entered_code);
+
+        if (entered_code == code)
+            printf("Login Successful!\n");
+        else
+            printf("Verification Failed!\n");
+    } else {
+        printf("Invalid UserID or Password!\n");
+    }
+
+    return 0;
+}
+
+
+2)
+
+#include <stdio.h>
+#include <string.h>
+
+void reverseString(char str[]) {
+    int n = strlen(str);
+    for(int i = 0; i < n/2; i++) {
+        char temp = str[i];
+        str[i] = str[n-i-1];
+        str[n-i-1] = temp;
+    }
+}
+
+int main() {
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    reverseString(str);
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}
