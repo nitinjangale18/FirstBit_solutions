@@ -1,0 +1,14 @@
+END OF DAY REPORT
+==============================
+Savings Account: 12
+Owner: nj
+Balance: 9000.0
+Salary Account: 123
+Owner: nitin
+Balance: 10000.0
+Current Account: 12345
+Owner: njj
+Balance: -9655.0
+Loan Account: 123456
+Owner: njjj
+Balance: -100000.0
