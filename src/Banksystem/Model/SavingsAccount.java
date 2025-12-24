@@ -11,6 +11,9 @@ public class SavingsAccount extends Account {
         super(ac, owner, bal);
         this.minBalance = minBal;
         this.interestRate = rate;
+        
+        tm.add(new Transaction(ac, bal, "Initial Deposit", "Manual", "Success"));
+
     }
 
     public String getType() {

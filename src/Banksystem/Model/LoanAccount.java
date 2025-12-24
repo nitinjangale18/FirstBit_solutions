@@ -7,22 +7,24 @@ public class LoanAccount extends Account {
     private double interestRate;
     private double emi;
     private String dueDate;
-    private int tenureMonths;   // ✅ ADD THIS LINE
+    private int tenureMonths;   
 
 
     public LoanAccount(int ac, String owner, double loanAmt,
             double rate, int tenureMonths, String dueDate) {
 
-super(ac, owner, -loanAmt);   // loan = negative balance
+super(ac, owner, -loanAmt);  
 
 this.loanAmount = loanAmt;
 this.interestRate = rate;
 this.tenureMonths = tenureMonths;
 this.dueDate = dueDate;
 
-// ✅ EMI calculation (CORRECT PLACE)
 double totalPayable = loanAmt + (loanAmt * rate / 100);
 this.emi = totalPayable / tenureMonths;
+
+tm.add(new Transaction(ac, loanAmount, "Loan Disbursed", "System", "Success"));
+
 }
     public String getType() {
         return "Loan";

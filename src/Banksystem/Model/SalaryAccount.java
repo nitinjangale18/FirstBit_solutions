@@ -13,7 +13,10 @@ public class SalaryAccount extends Account {
         super(ac, owner, bal);
         this.employerName = emp;
         this.salaryLimit = limit;
-        this.lastTransaction = LocalDateTime.now(); // account creation counts
+        this.lastTransaction = LocalDateTime.now();
+        
+        tm.add(new Transaction(ac, bal, "Initial Salary Credit", "Manual", "Success"));
+
     }
 
     public String getType() {
@@ -33,31 +36,22 @@ public class SalaryAccount extends Account {
         }
     }
 
-    // Update last transaction when deposit happens
     @Override
     public void deposit(double amount) {
         super.deposit(amount);
         lastTransaction = LocalDateTime.now();
     }
 
-    // Update last transaction when withdraw happens
     @Override
     public void withdraw(double amount) {
         super.withdraw(amount);
         lastTransaction = LocalDateTime.now();
     }
 
-    // Check if account is frozen (no transaction in last 2 months)
     public boolean isFrozen() {
         return lastTransaction.plusSeconds(2).isBefore(LocalDateTime.now());
     }
 }
 
-/*
-package Banksystem.Model;
 
-
-
-
- */
 

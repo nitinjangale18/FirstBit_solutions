@@ -8,6 +8,8 @@ public class CurrentAccount extends Account {
     public CurrentAccount(int ac, String owner, double bal, double limit) {
         super(ac, owner, bal);
         this.overdraftLimit = limit;
+        tm.add(new Transaction(ac, bal, "Initial Deposit", "Manual", "Success"));
+
     }
 
     public String getType() {

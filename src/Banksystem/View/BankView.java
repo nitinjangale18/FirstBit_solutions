@@ -72,55 +72,58 @@ public class BankView {
 		} catch (Exception e) {
 			return 0;
 		}
-	}// Bank View class ends here
-
-	/* ---------- CREATE ACCOUNT WITH TYPE INPUT ----------- */
+	}
 
 	void createAccount() {
-		System.out.println("\nEnter Account Type (savings/salary/current/loan): ");
-		String type = sc.nextLine().toLowerCase();
+	    System.out.println("\nSelect Account Type:");
+	    System.out.println("1. Savings");
+	    System.out.println("2. Current");
+	    System.out.println("3. Salary");
+	    System.out.println("4. Loan");
 
-		System.out.print("Account No: ");
-		int ac = readInt();
+	    System.out.print("Choice: ");
+	    int typeChoice = readInt();
 
-		System.out.print("Owner Name: ");
-		String name = sc.nextLine();
+	    System.out.print("Account No: ");
+	    int ac = readInt();
 
-		switch (type) {
+	    System.out.print("Owner Name: ");
+	    String name = sc.nextLine();
 
-		case "savings":
-			System.out.print("Initial Balance: ");
-			double bal = readDouble();
-			if (bal < 10000) {
-			    System.out.println("Error: Minimum balance for savings account is 10000 Rs");
-			    return; // or ask again
-			}
-			c.addAccount(new SavingsAccount(ac, name, bal, 1000, 5.5));
-			break;
-			
-			
-		case "current":
-			System.out.print("Initial Balance: ");
-			double bal2 = readDouble();
-			c.addAccount(new CurrentAccount(ac, name, bal2, 10000));
-			break;
+	    switch (typeChoice) {
+	        case 1: 
+	            System.out.print("Initial Balance: ");
+	            double bal = readDouble();
+	            if (bal < 10000) {
+	                System.out.println("Error: Minimum balance for savings account is 10000 Rs");
+	                return;
+	            }
+	            c.addAccount(new SavingsAccount(ac, name, bal, 1000, 5.5));
+	            break;
 
-		case "salary":
-			System.out.print("Initial Balance: ");
-			double bal3 = readDouble();
-			c.addAccount(new SalaryAccount(ac, name, bal3, "Company", 50000));
-			break;
+	        case 2: 
+	            System.out.print("Initial Balance: ");
+	            double bal2 = readDouble();
+	            c.addAccount(new CurrentAccount(ac, name, bal2, 10000));
+	            break;
 
-		case "loan":
-		    System.out.print("Loan Amount: ");
-		    double loanAmt = readDouble();
-		    c.addAccount(new LoanAccount(ac, name, loanAmt, 10, 12, "10th Every Month"));
-		    break;
+	        case 3: 
+	            System.out.print("Initial Balance: ");
+	            double bal3 = readDouble();
+	            c.addAccount(new SalaryAccount(ac, name, bal3, "Company", 50000));
+	            break;
 
-		default:
-			System.out.println("Invalid Account Type");
-		}
+	        case 4: 
+	            System.out.print("Loan Amount: ");
+	            double loanAmt = readDouble();
+	            c.addAccount(new LoanAccount(ac, name, loanAmt, 10, 12, "10th Every Month"));
+	            break;
+
+	        default:
+	            System.out.println("Invalid Choice");
+	    }
 	}
+
 
 	void deposit() {
 		System.out.print("Account No: ");

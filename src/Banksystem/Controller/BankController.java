@@ -28,7 +28,6 @@ public class BankController {
             return;
         }
 
-        // Loan account → EMI payment
         if (a instanceof LoanAccount) {
             ((LoanAccount) a).payEmi(amt);
             return;
@@ -148,20 +147,5 @@ public class BankController {
         }
     }
     
-    /*
-
-    public void saveReport() {
-        System.out.println("END OF DAY REPORT\n==============================\n");
-
-        for (Account a : model.getAll()) {
-            System.out.println(a.getType() + " Account: " + a.getAccountNumber());
-            System.out.println("Owner: " + a.getOwnerName());
-            System.out.println("Balance: " + a.getBalance());
-            System.out.println("Transactions:");
-            a.printTransactions();
-            System.out.println("-----------------------------\n");
-        }
-
-        System.out.println(" Report displayed on console");
-    }*/
+   
 }
